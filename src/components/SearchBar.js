@@ -1,0 +1,84 @@
+import React, { useState, useEffect } from "react";
+import dataList from "../data.js";
+import ResultSection from "./ResultSection";
+
+const SearchBar = () => {
+  const [searchText, setSearchText] = useState("");
+  const [result, setResult] = useState({});
+
+  const searchHandler = (e) => {
+    const newSearch = e.target.value;
+    e.preventDefault();
+    setSearchText(newSearch.toLowerCase());
+    // if (searchText.length > 1) {
+    //   searchData(searchText.toLowerCase());
+    // }
+  };
+
+  // const searchData = (searchTerm) => {
+  //   if (dataList[0].name.toLowerCase().includes(searchTerm)) {
+  //     setResult(dataList[0]);
+  //   } else {
+  //     setResult({});
+  //   }
+  // };
+
+  // const searchData = (searchTerm) => {
+  //   if (dataList[0].name.toLowerCase().includes(searchTerm)) {
+  //     setResult(dataList[0]);
+  //   } else {
+  //     setResult({});
+  //   }
+  // };
+
+  useEffect(() => {
+    for (let i = 0; i < dataList.length; i++) {
+      if (
+        dataList[i].name.toLowerCase().includes(searchText) &&
+        searchText.length > 1
+      ) {
+        setResult(dataList[i]);
+        break;
+      } else {
+        setResult({});
+      }
+    }
+
+    // if (
+    //   dataList[0].name.toLowerCase().includes(searchText) &&
+    //   searchText.length > 1
+    // ) {
+    //   setResult(dataList[0]);
+    // } else {
+    //   setResult({});
+    // }
+  }, [searchText]);
+
+  return (
+    <div className="container mx-auto lg:px-4 text-left lg:text-center px-8">
+      <form className="" action="/">
+        <div className="flex flex-col mb-4 rounded md:items-center">
+          <label className="mb-2 uppercase font-bold text-lg text-blue-600">
+            Search by medicine name
+          </label>
+          <input
+            value={searchText}
+            onChange={searchHandler}
+            className="border py-2 px-3 text-grey-darkest rounded md:w-1/3"
+            type="text"
+            name="search"
+            id="search"
+          ></input>
+        </div>
+      </form>
+      {result == null || result.name ? (
+        <div>
+          <ResultSection result={result} />
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+export default SearchBar;
