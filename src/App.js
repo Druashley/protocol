@@ -1,13 +1,20 @@
-import TitleSection from "./components/TitleSection";
-import NewSection from "./components/NewSection";
-import SearchBar from "./components/SearchBar";
+import MainPage from "./pages/MainPage";
+import NewMedicinePage from "./pages/NewMedicinePage";
+import { Switch, Route, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
-      <TitleSection />
-      <SearchBar />
-      <NewSection />
+      <Switch location={location} key={location.pathname}>
+        <Route path="/" exact>
+          <MainPage />
+        </Route>
+        <Route path="/newmedicine" exact>
+          <NewMedicinePage />
+        </Route>
+      </Switch>
     </div>
   );
 }

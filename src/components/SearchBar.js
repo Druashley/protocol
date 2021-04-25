@@ -10,26 +10,7 @@ const SearchBar = () => {
     const newSearch = e.target.value;
     e.preventDefault();
     setSearchText(newSearch.toLowerCase());
-    // if (searchText.length > 1) {
-    //   searchData(searchText.toLowerCase());
-    // }
   };
-
-  // const searchData = (searchTerm) => {
-  //   if (dataList[0].name.toLowerCase().includes(searchTerm)) {
-  //     setResult(dataList[0]);
-  //   } else {
-  //     setResult({});
-  //   }
-  // };
-
-  // const searchData = (searchTerm) => {
-  //   if (dataList[0].name.toLowerCase().includes(searchTerm)) {
-  //     setResult(dataList[0]);
-  //   } else {
-  //     setResult({});
-  //   }
-  // };
 
   useEffect(() => {
     for (let i = 0; i < dataList.length; i++) {
@@ -43,15 +24,6 @@ const SearchBar = () => {
         setResult({});
       }
     }
-
-    // if (
-    //   dataList[0].name.toLowerCase().includes(searchText) &&
-    //   searchText.length > 1
-    // ) {
-    //   setResult(dataList[0]);
-    // } else {
-    //   setResult({});
-    // }
   }, [searchText]);
 
   return (

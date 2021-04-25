@@ -37,7 +37,10 @@ const ResultSection = ({ result }) => {
                 <ul className="mt-2 list-disc">
                   {result.indications.map((indication) => {
                     return (
-                      <li className="text-base leading-6 text-gray-600 m-4">
+                      <li
+                        key={indication}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
                         {indication}
                       </li>
                     );
@@ -51,7 +54,10 @@ const ResultSection = ({ result }) => {
                 <ul className="mt-2 list-disc">
                   {result.contraindications.map((contraindication) => {
                     return (
-                      <li className="text-base leading-6 text-gray-600 m-4">
+                      <li
+                        key={contraindication}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
                         {contraindication}
                       </li>
                     );
@@ -65,7 +71,10 @@ const ResultSection = ({ result }) => {
                 <ul className="mt-2 list-disc">
                   {result.sideEffects.map((sideEffect) => {
                     return (
-                      <li className="text-base leading-6 text-gray-600 m-4">
+                      <li
+                        key={sideEffect}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
                         {sideEffect}
                       </li>
                     );
@@ -79,7 +88,10 @@ const ResultSection = ({ result }) => {
                 <ul className="mt-2 list-disc">
                   {result.routes.map((route) => {
                     return (
-                      <li className="text-base leading-6 text-gray-600 m-4">
+                      <li
+                        key={route}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
                         {route}
                       </li>
                     );
@@ -93,7 +105,10 @@ const ResultSection = ({ result }) => {
                 <ul className="mt-2 list-disc">
                   {result.ivInfusion.map((iv) => {
                     return (
-                      <li className="text-base leading-6 text-gray-600 m-4">
+                      <li
+                        key={iv}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
                         {iv}
                       </li>
                     );

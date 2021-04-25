@@ -1,6 +1,6 @@
 import React from "react";
 
-const TitleSection = () => {
+const TitleSection = ({ phrase }) => {
   return (
     <div>
       <section className="text-gray-700 body-font">
@@ -15,8 +15,7 @@ const TitleSection = () => {
             </h1>
           </div>
           <p className="mx-auto text-base font-medium leading-relaxed text-gray-700 lg:w-1/2">
-            Please use the search bar to find the answer you are seeking. Also,
-            look through our newest changes to the protocol.
+            {phrase}
           </p>
         </div>
       </section>
