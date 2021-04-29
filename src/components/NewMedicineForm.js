@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const NewMedicineForm = () => {
   const [medicineName, setMedicineName] = useState("");
   const [tradeName, setTradeName] = useState("");
 
-  const [action, setAction] = useState([]);
+  const [action, setAction] = useState([""]);
   const [actionLineCount, setActionLineCount] = useState(["1"]);
-  const [indications, setIndications] = useState([]);
+  const [indications, setIndications] = useState([""]);
   const [indicationsLineCount, setIndicationsLineCount] = useState(["1"]);
-  const [contraindications, setContraindications] = useState([]);
+  const [contraindications, setContraindications] = useState([""]);
   const [contraindicationsLineCount, setContraindicationsLineCount] = useState([
     "1",
   ]);
   const [sideEffectsLineCount, setSideEffectsLineCount] = useState(["1"]);
-  const [sideEffects, setSideEffects] = useState([]);
+  const [sideEffects, setSideEffects] = useState([""]);
   const [routesLineCount, setRoutesLineCount] = useState(["1"]);
-  const [routes, setRoutes] = useState([]);
+  const [routes, setRoutes] = useState([""]);
   const [ivInfusionLineCount, setIvInfusionLineCount] = useState(["1"]);
-  const [ivInfusion, setIvInfusion] = useState([]);
+  const [ivInfusion, setIvInfusion] = useState([""]);
 
   const [newMedicine, setNewMedicine] = useState([]);
 
@@ -81,7 +81,6 @@ const NewMedicineForm = () => {
 
   const submitMedicineHandler = (event) => {
     event.preventDefault();
-
     setNewMedicine({
       name: medicineName,
       tradeName: tradeName,
@@ -140,6 +139,19 @@ const NewMedicineForm = () => {
     const newCount = parseInt(initialCount) + 1;
     const newArray = [...initialArray, newCount.toString()];
     setIvInfusionLineCount(newArray);
+  };
+
+  const removeFormLine = (action, lineCount, setAction, setActionLineCount) => {
+    const initialArray = action;
+    const initalCount = lineCount;
+
+    initalCount.pop();
+    initialArray.pop();
+
+    console.log(initialArray, initalCount);
+
+    setAction(initialArray);
+    setActionLineCount(initalCount);
   };
 
   return (
@@ -207,6 +219,18 @@ const NewMedicineForm = () => {
             })}
 
             <h1 onClick={createActionExtraLine}>+</h1>
+            <h1
+              onClick={() =>
+                removeFormLine(
+                  action,
+                  actionLineCount,
+                  setAction,
+                  setActionLineCount
+                )
+              }
+            >
+              -
+            </h1>
           </div>
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
