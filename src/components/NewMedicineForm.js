@@ -141,17 +141,20 @@ const NewMedicineForm = () => {
     setIvInfusionLineCount(newArray);
   };
 
-  const removeFormLine = (action, lineCount, setAction, setActionLineCount) => {
-    const initialArray = action;
-    const initalCount = lineCount;
+  const removeFormLine = (
+    description,
+    lineCount,
+    setDescription,
+    setDescriptionLineCount
+  ) => {
+    let initialArray = description;
+    let initalCount = lineCount;
 
     initalCount.pop();
     initialArray.pop();
 
-    console.log(initialArray, initalCount);
-
-    setAction(initialArray);
-    setActionLineCount(initalCount);
+    setDescription(initialArray);
+    setDescriptionLineCount(initalCount);
   };
 
   return (
