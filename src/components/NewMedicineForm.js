@@ -1,160 +1,151 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 const NewMedicineForm = () => {
   const [medicineName, setMedicineName] = useState("");
   const [tradeName, setTradeName] = useState("");
 
-  const [action, setAction] = useState([""]);
-  const [actionLineCount, setActionLineCount] = useState(["1"]);
-  const [indications, setIndications] = useState([""]);
-  const [indicationsLineCount, setIndicationsLineCount] = useState(["1"]);
-  const [contraindications, setContraindications] = useState([""]);
-  const [contraindicationsLineCount, setContraindicationsLineCount] = useState([
-    "1",
-  ]);
-  const [sideEffectsLineCount, setSideEffectsLineCount] = useState(["1"]);
-  const [sideEffects, setSideEffects] = useState([""]);
-  const [routesLineCount, setRoutesLineCount] = useState(["1"]);
-  const [routes, setRoutes] = useState([""]);
-  const [ivInfusionLineCount, setIvInfusionLineCount] = useState(["1"]);
-  const [ivInfusion, setIvInfusion] = useState([""]);
-
   const [newMedicine, setNewMedicine] = useState([]);
 
-  const medicineNameHandler = (e) => {
-    const newMedicineName = e.target.value;
-    setMedicineName(newMedicineName);
-  };
+  const [actionList, setActionList] = useState([]);
+  const [actionName, setActionName] = useState("");
 
-  const tradeNameHandler = (e) => {
-    const newTradeName = e.target.value;
-    setTradeName(newTradeName);
-  };
+  const [indicationsList, setIndicationsList] = useState([]);
+  const [indicationName, setIndicationName] = useState("");
 
-  const actionHandler = (e, line) => {
-    const newAction = e.target.value;
-    const currentAction = action;
-    const newArray = [...currentAction];
-    newArray[line - 1] = newAction;
-    setAction(newArray);
-  };
+  const [contraindicationsList, setContraindicationsList] = useState([]);
+  const [contraindicationName, setContraindicationName] = useState("");
 
-  const indicationsHandler = (e, line) => {
-    const newIndication = e.target.value;
-    const currentIndication = indications;
-    const newArray = [...currentIndication];
-    newArray[line - 1] = newIndication;
-    setIndications(newArray);
-  };
+  const [sideEffectsList, setSideEffectsList] = useState([]);
+  const [sideEffectName, setSideEffectName] = useState("");
 
-  const contraindicationsHandler = (e, line) => {
-    const newContraindication = e.target.value;
-    const currentContraindication = contraindications;
-    const newArray = [...currentContraindication];
-    newArray[line - 1] = newContraindication;
-    setContraindications(newArray);
-  };
+  const [routesList, setRoutesList] = useState([]);
+  const [routeName, setRouteName] = useState("");
 
-  const sideEffectsHandler = (e, line) => {
-    const newSideEffect = e.target.value;
-    const currentSideEffect = sideEffects;
-    const newArray = [...currentSideEffect];
-    newArray[line - 1] = newSideEffect;
-    setSideEffects(newArray);
-  };
-
-  const routesHandler = (e, line) => {
-    const newRoute = e.target.value;
-    const currentRoute = routes;
-    const newArray = [...currentRoute];
-    newArray[line - 1] = newRoute;
-    setRoutes(newArray);
-  };
-
-  const ivInfusionHandler = (e, line) => {
-    const newIvInfusion = e.target.value;
-    const currentIvInfusion = ivInfusion;
-    const newArray = [...currentIvInfusion];
-    newArray[line - 1] = newIvInfusion;
-    setIvInfusion(newArray);
-  };
+  const [ivInfusionList, setIvInfusionList] = useState([]);
+  const [ivInfusionName, setIvInfusionName] = useState("");
 
   const submitMedicineHandler = (event) => {
     event.preventDefault();
     setNewMedicine({
       name: medicineName,
       tradeName: tradeName,
-      action: action,
-      indications: indications,
-      contraindications: contraindications,
-      sideEffects: sideEffects,
-      routes: routes,
-      ivInfusion: ivInfusion,
+      action: actionList,
+      indications: indicationsList,
+      contraindications: contraindicationsList,
+      sideEffects: sideEffectsList,
+      routes: routesList,
+      ivInfusion: ivInfusionList,
     });
   };
 
-  const createActionExtraLine = () => {
-    const initialArray = actionLineCount;
-    const initialCount = actionLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setActionLineCount(newArray);
+  const addAction = (e) => {
+    if (actionName.length > 0) {
+      setActionList([
+        ...actionList,
+        {
+          id: actionList.length,
+          name: actionName,
+        },
+      ]);
+      setActionName("");
+    }
   };
 
-  const createindicationExtraLine = () => {
-    const initialArray = indicationsLineCount;
-    const initialCount = indicationsLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setIndicationsLineCount(newArray);
+  const removeAction = (id) => {
+    const newList = actionList.filter((item) => item.id !== id);
+    setActionList(newList);
   };
 
-  const createContraindicationExtraLine = () => {
-    const initialArray = contraindicationsLineCount;
-    const initialCount = contraindicationsLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setContraindicationsLineCount(newArray);
+  const addIndication = (e) => {
+    if (indicationName.length > 0) {
+      setIndicationsList([
+        ...indicationsList,
+        {
+          id: indicationsList.length,
+          name: indicationName,
+        },
+      ]);
+      setIndicationName("");
+    }
   };
 
-  const createSideEffectExtraLine = () => {
-    const initialArray = sideEffectsLineCount;
-    const initialCount = sideEffectsLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setSideEffectsLineCount(newArray);
+  const removeIndication = (id) => {
+    const newList = indicationsList.filter((item) => item.id !== id);
+    setIndicationsList(newList);
   };
 
-  const createRoutesExtraLine = () => {
-    const initialArray = routesLineCount;
-    const initialCount = routesLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setRoutesLineCount(newArray);
+  const addContraindication = (e) => {
+    if (contraindicationName.length > 0) {
+      setContraindicationsList([
+        ...contraindicationsList,
+        {
+          id: contraindicationsList.length,
+          name: contraindicationName,
+        },
+      ]);
+      setContraindicationName("");
+    }
   };
 
-  const createIvInfusionExtraLine = () => {
-    const initialArray = ivInfusionLineCount;
-    const initialCount = ivInfusionLineCount.slice(-1).pop();
-    const newCount = parseInt(initialCount) + 1;
-    const newArray = [...initialArray, newCount.toString()];
-    setIvInfusionLineCount(newArray);
+  const removeContraindication = (id) => {
+    const newList = contraindicationsList.filter((item) => item.id !== id);
+    setContraindicationsList(newList);
   };
 
-  const removeFormLine = (
-    description,
-    lineCount,
-    setDescription,
-    setDescriptionLineCount
-  ) => {
-    let initialArray = description;
-    let initalCount = lineCount;
+  const addSideEffect = (e) => {
+    if (sideEffectName.length > 0) {
+      setSideEffectsList([
+        ...sideEffectsList,
+        {
+          id: sideEffectsList.length,
+          name: sideEffectName,
+        },
+      ]);
+      setSideEffectName("");
+    }
+  };
 
-    initalCount.pop();
-    initialArray.pop();
+  const removeSideEffect = (id) => {
+    const newList = sideEffectsList.filter((item) => item.id !== id);
+    setSideEffectsList(newList);
+  };
 
-    setDescription(initialArray);
-    setDescriptionLineCount(initalCount);
+  const addRoute = (e) => {
+    if (routeName.length > 0) {
+      setRoutesList([
+        ...routesList,
+        {
+          id: routesList.length,
+          name: routeName,
+        },
+      ]);
+      setRouteName("");
+    }
+  };
+
+  const removeRoute = (id) => {
+    const newList = routesList.filter((item) => item.id !== id);
+    setRoutesList(newList);
+  };
+
+  const addIvInfusion = (e) => {
+    if (ivInfusionName.length > 0) {
+      setIvInfusionList([
+        ...ivInfusionList,
+        {
+          id: ivInfusionList.length,
+          name: ivInfusionName,
+        },
+      ]);
+      setIvInfusionName("");
+    }
+  };
+
+  const removeIvInfusion = (id) => {
+    const newList = ivInfusionList.filter((item) => item.id !== id);
+    setIvInfusionList(newList);
   };
 
   return (
@@ -170,35 +161,40 @@ const NewMedicineForm = () => {
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
-              htmlFor="name"
+              htmlFor="action"
             >
-              Medicine Name
+              Drug Name
             </label>
-            <input
-              className="border py-2 px-3 text-grey-darkest md:mr-2"
-              type="text"
-              name="name"
-              id="name"
-              value={medicineName}
-              onChange={medicineNameHandler}
-            />
+
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={medicineName}
+                onChange={(e) => setMedicineName(e.target.value)}
+              />
+            </div>
           </div>
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
-              htmlFor="tradeName"
+              htmlFor="action"
             >
               Trade Name
             </label>
-            <input
-              className="border py-2 px-3 text-grey-darkest md:mr-2"
-              type="text"
-              name="tradeName"
-              id="tradeName"
-              value={tradeName}
-              onChange={tradeNameHandler}
-            />
+
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={tradeName}
+                onChange={(e) => setTradeName(e.target.value)}
+              />
+            </div>
           </div>
+
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
@@ -206,34 +202,32 @@ const NewMedicineForm = () => {
             >
               Action
             </label>
-
-            {actionLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`action${line}`}
-                  id={`action${line}`}
-                  key={line}
-                  value={action[line - 1]}
-                  onChange={(e) => actionHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createActionExtraLine}>+</h1>
-            <h1
-              onClick={() =>
-                removeFormLine(
-                  action,
-                  actionLineCount,
-                  setAction,
-                  setActionLineCount
-                )
-              }
-            >
-              -
-            </h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {actionList.map((action) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={action.id}
+                  onClick={() => removeAction(action.id)}
+                >
+                  {action.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={actionName}
+                onChange={(e) => setActionName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addAction}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
@@ -242,22 +236,32 @@ const NewMedicineForm = () => {
             >
               Indications
             </label>
-
-            {indicationsLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`indications${line}`}
-                  id={`indications${line}`}
-                  key={line}
-                  value={indications[line - 1]}
-                  onChange={(e) => indicationsHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createindicationExtraLine}>+</h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {indicationsList.map((indication) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={indication.id}
+                  onClick={() => removeIndication(indication.id)}
+                >
+                  {indication.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={indicationName}
+                onChange={(e) => setIndicationName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addIndication}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
@@ -266,22 +270,32 @@ const NewMedicineForm = () => {
             >
               Contraindications
             </label>
-
-            {contraindicationsLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`contraindications${line}`}
-                  id={`contraindications${line}`}
-                  key={line}
-                  value={contraindications[line - 1]}
-                  onChange={(e) => contraindicationsHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createContraindicationExtraLine}>+</h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {contraindicationsList.map((contraindication) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={contraindication.id}
+                  onClick={() => removeContraindication(contraindication.id)}
+                >
+                  {contraindication.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={contraindicationName}
+                onChange={(e) => setContraindicationName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addContraindication}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
@@ -290,24 +304,33 @@ const NewMedicineForm = () => {
             >
               Side Effects
             </label>
-
-            {sideEffectsLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`sideEffects${line}`}
-                  id={`sideEffects${line}`}
-                  key={line}
-                  value={sideEffects[line - 1]}
-                  onChange={(e) => sideEffectsHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createSideEffectExtraLine}>+</h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {sideEffectsList.map((sideEffect) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={sideEffect.id}
+                  onClick={() => removeSideEffect(sideEffect.id)}
+                >
+                  {sideEffect.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={sideEffectName}
+                onChange={(e) => setSideEffectName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addSideEffect}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
-
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
@@ -315,24 +338,33 @@ const NewMedicineForm = () => {
             >
               Routes
             </label>
-
-            {routesLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`routes${line}`}
-                  id={`routes${line}`}
-                  key={line}
-                  value={routes[line - 1]}
-                  onChange={(e) => routesHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createRoutesExtraLine}>+</h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {routesList.map((route) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={route.id}
+                  onClick={() => removeRoute(route.id)}
+                >
+                  {route.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={routeName}
+                onChange={(e) => setRouteName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addRoute}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
-
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
@@ -340,24 +372,33 @@ const NewMedicineForm = () => {
             >
               IV Infusion
             </label>
-
-            {ivInfusionLineCount.map((line) => {
-              return (
-                <input
-                  className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
-                  type="text"
-                  name={`ivInfusion${line}`}
-                  id={`ivInfusion${line}`}
-                  key={line}
-                  value={ivInfusion[line - 1]}
-                  onChange={(e) => ivInfusionHandler(e, line)}
-                />
-              );
-            })}
-
-            <h1 onClick={createIvInfusionExtraLine}>+</h1>
+            <ul className="flex items-start gap-4 flex-wrap list-disc">
+              {ivInfusionList.map((ivInfusion) => (
+                <li
+                  className="w-2/5 break-words text-base text-gray-600 max-w-3xl m-2 hover:line-through hover:text-red-500 cursor-pointer"
+                  key={ivInfusion.id}
+                  onClick={() => removeIvInfusion(ivInfusion.id)}
+                >
+                  {ivInfusion.name}
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={ivInfusionName}
+                onChange={(e) => setIvInfusionName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addIvInfusion}
+                className="cursor-pointer ml-2"
+              />
+            </div>
           </div>
-
           <button
             className="block bg-teal hover:bg-blue-700 text-white bg-blue-500 uppercase text-lg mx-auto p-4 rounded"
             //type="submit"
