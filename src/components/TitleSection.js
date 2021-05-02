@@ -14,7 +14,7 @@ const TitleSection = ({ phrase }) => {
               Protocol
             </h1>
           </div>
-          <p className="mx-auto text-base font-medium leading-relaxed text-gray-700 lg:w-1/2">
+          <p className="mx-auto text-base font-medium leading-relaxed text-gray-700 lg:w-1/2 pb-24 lg:pb-0">
             {phrase}
           </p>
         </div>

@@ -149,7 +149,7 @@ const NewMedicineForm = () => {
   };
 
   return (
-    <div className="flex items-center h-screen w-full bg-blue-50 md:h-4/5 md:w-4/5 md:mx-auto md:rounded">
+    <div className="flex items-center h-screen w-full bg-gradient-to-r from-blue-200 to-blue-500  md:h-4/5 md:w-4/5 md:mx-auto md:rounded">
       <div className="w-full bg-white rounded shadow-lg p-8 m-4 md:max-w-7xl md:mx-auto">
         <h1 className="text-4xl text-blue-700 font-bold ">Medicine Details</h1>
         <form
@@ -157,6 +157,7 @@ const NewMedicineForm = () => {
           //  action="/"
           // method="POST"
           onSubmit={submitMedicineHandler}
+          autoComplete="off"
         >
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
