@@ -29,7 +29,7 @@ const NewMedicineForm = () => {
   const submitMedicineHandler = (event) => {
     event.preventDefault();
     setNewMedicine({
-      name: medicineName,
+      medicineName: medicineName,
       tradeName: tradeName,
       action: actionList,
       indications: indicationsList,
@@ -38,6 +38,28 @@ const NewMedicineForm = () => {
       routes: routesList,
       ivInfusion: ivInfusionList,
     });
+
+    const url = "/";
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        medicineName,
+        tradeName,
+        actionList,
+        indicationsList,
+        contraindicationsList,
+        sideEffectsList,
+        routesList,
+        ivInfusionList,
+      }),
+    };
+    //   fetch(url, requestOptions)
+    //       .then(response => console.log('Submitted successfully'))
+    //       .catch(error => console.log('Form submit error', error))
+    // };
+
+    fetch(url, requestOptions);
   };
 
   const addAction = (e) => {
@@ -154,8 +176,8 @@ const NewMedicineForm = () => {
         <h1 className="text-4xl text-blue-700 font-bold ">Medicine Details</h1>
         <form
           className="mb-6 md:flex md:flex-wrap md:justify-between"
-          //  action="/"
-          // method="POST"
+          action="/"
+          method="POST"
           onSubmit={submitMedicineHandler}
           autoComplete="off"
         >
@@ -169,7 +191,7 @@ const NewMedicineForm = () => {
 
             <div className="flex items-center ">
               <input
-                name="item"
+                name="medicineName"
                 type="text"
                 className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
                 value={medicineName}
@@ -187,7 +209,7 @@ const NewMedicineForm = () => {
 
             <div className="flex items-center ">
               <input
-                name="item"
+                name="tradeName"
                 type="text"
                 className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
                 value={tradeName}
