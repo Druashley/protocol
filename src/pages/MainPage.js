@@ -4,9 +4,17 @@ import SearchBar from "../components/SearchBar";
 import NewSection from "../components/NewSection";
 import { Link } from "react-router-dom";
 
-const MainPage = () => {
+const MainPage = ({ medicineList }) => {
   return (
     <div>
+      <button
+        onClick={() => {
+          console.log(medicineList);
+        }}
+      >
+        {" "}
+        Yeet
+      </button>
       <TitleSection
         phrase="Please use the search bar to find the answer you are seeking. Also,
             look through our newest changes to the protocol."

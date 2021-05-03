@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,8 +27,11 @@ const NewMedicineForm = () => {
   const [ivInfusionList, setIvInfusionList] = useState([]);
   const [ivInfusionName, setIvInfusionName] = useState("");
 
+  const history = useHistory();
+
   const submitMedicineHandler = (event) => {
     event.preventDefault();
+
     setNewMedicine({
       medicineName: medicineName,
       tradeName: tradeName,
@@ -54,6 +58,8 @@ const NewMedicineForm = () => {
         ivInfusionList,
       }),
     };
+    history.push("/");
+
     //   fetch(url, requestOptions)
     //       .then(response => console.log('Submitted successfully'))
     //       .catch(error => console.log('Form submit error', error))
