@@ -6,6 +6,9 @@ import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 const NewMedicineForm = () => {
   const [medicineName, setMedicineName] = useState("");
   const [tradeName, setTradeName] = useState("");
+  const [newsPhrase, setNewsPhrase] = useState("");
+
+  const [author, setAuthor] = useState("Dr. Bond");
 
   const [newMedicine, setNewMedicine] = useState([]);
 
@@ -41,6 +44,8 @@ const NewMedicineForm = () => {
       sideEffects: sideEffectsList,
       routes: routesList,
       ivInfusion: ivInfusionList,
+      newsPhrase: newsPhrase,
+      author: author,
     });
 
     const url = "/";
@@ -56,6 +61,8 @@ const NewMedicineForm = () => {
         sideEffectsList,
         routesList,
         ivInfusionList,
+        newsPhrase,
+        author,
       }),
     };
     history.push("/");
@@ -220,6 +227,24 @@ const NewMedicineForm = () => {
                 className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
                 value={tradeName}
                 onChange={(e) => setTradeName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col mb-4 md:w-1/2">
+            <label
+              className="mb-2 uppercase font-bold text-lg text-blue-600"
+              htmlFor="action"
+            >
+              News Phrase
+            </label>
+
+            <div className="flex items-center ">
+              <input
+                name="newsPhrase"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={newsPhrase}
+                onChange={(e) => setNewsPhrase(e.target.value)}
               />
             </div>
           </div>

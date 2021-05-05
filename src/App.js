@@ -11,8 +11,7 @@ function App() {
 
   const getMedicineData = () => {
     axios.get("/api").then((res) => {
-      const medicineData = res.data;
-      setMedicineList(medicineData);
+      setMedicineList(res.data);
       console.log("Data has been received!!");
     });
   };
