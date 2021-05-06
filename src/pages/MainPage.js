@@ -12,7 +12,7 @@ const MainPage = ({ medicineList }) => {
             look through our newest changes to the protocol."
       />
 
-      <SearchBar />
+      <SearchBar medicineList={medicineList} />
       <NewSection medicineList={medicineList} />
       <button className="px-4 py-2 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-700 rounded-lg hover:bg-blue-400  focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
         <Link to="/newmedicine">Create New Medicine Protocol</Link>

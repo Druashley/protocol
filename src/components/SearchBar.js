@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dataList from "../data.js";
 import ResultSection from "./ResultSection";
 
-const SearchBar = () => {
+const SearchBar = ({ medicineList }) => {
   const [searchText, setSearchText] = useState("");
   const [result, setResult] = useState({});
 
@@ -13,12 +13,12 @@ const SearchBar = () => {
   };
 
   useEffect(() => {
-    for (let i = 0; i < dataList.length; i++) {
+    for (let i = 0; i < medicineList.length; i++) {
       if (
-        dataList[i].name.toLowerCase().includes(searchText) &&
+        medicineList[i].medicineName.toLowerCase().includes(searchText) &&
         searchText.length > 1
       ) {
-        setResult(dataList[i]);
+        setResult(medicineList[i]);
         break;
       } else {
         setResult({});
@@ -40,10 +40,11 @@ const SearchBar = () => {
             type="text"
             name="search"
             id="search"
+            autoComplete="off"
           ></input>
         </div>
       </form>
-      {result == null || result.name ? (
+      {result == null || result.medicineName ? (
         <div>
           <ResultSection result={result} />
         </div>

@@ -3,11 +3,11 @@ import React from "react";
 const ResultSection = ({ result }) => {
   return (
     <div>
-      {result == null || result.name ? (
+      {result == null || result.medicineName ? (
         <div>
           <div className="max-w-screen-xl mx-auto p-8 mb-24 text-left">
             <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
-              {result.name}
+              {result.medicineName}
             </h2>
             <ul className="flex items-start gap-8 flex-wrap">
               <li className="w-2/5">
@@ -24,24 +24,31 @@ const ResultSection = ({ result }) => {
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Action
                 </div>
-                <div className="mt-2">
-                  <div className="text-base leading-6 text-gray-600">
-                    {result.action}
-                  </div>
-                </div>
+                <ul className="mt-2 list-disc">
+                  {result.actionList.map((action) => {
+                    return (
+                      <li
+                        key={action.id}
+                        className="text-base leading-6 text-gray-600 m-4"
+                      >
+                        {action.name}
+                      </li>
+                    );
+                  })}
+                </ul>
               </li>
               <li className="w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Indications
                 </div>
                 <ul className="mt-2 list-disc">
-                  {result.indications.map((indication) => {
+                  {result.indicationsList.map((indication) => {
                     return (
                       <li
-                        key={indication}
+                        key={indication.id}
                         className="text-base leading-6 text-gray-600 m-4"
                       >
-                        {indication}
+                        {indication.name}
                       </li>
                     );
                   })}
@@ -52,13 +59,13 @@ const ResultSection = ({ result }) => {
                   Contraindications
                 </div>
                 <ul className="mt-2 list-disc">
-                  {result.contraindications.map((contraindication) => {
+                  {result.contraindicationsList.map((contraindication) => {
                     return (
                       <li
-                        key={contraindication}
+                        key={contraindication.id}
                         className="text-base leading-6 text-gray-600 m-4"
                       >
-                        {contraindication}
+                        {contraindication.name}
                       </li>
                     );
                   })}
@@ -69,13 +76,13 @@ const ResultSection = ({ result }) => {
                   Side Effects & Precautions
                 </div>
                 <ul className="mt-2 list-disc">
-                  {result.sideEffects.map((sideEffect) => {
+                  {result.sideEffectsList.map((sideEffect) => {
                     return (
                       <li
-                        key={sideEffect}
+                        key={sideEffect.id}
                         className="text-base leading-6 text-gray-600 m-4"
                       >
-                        {sideEffect}
+                        {sideEffect.name}
                       </li>
                     );
                   })}
@@ -86,13 +93,13 @@ const ResultSection = ({ result }) => {
                   Route & Dosage
                 </div>
                 <ul className="mt-2 list-disc">
-                  {result.routes.map((route) => {
+                  {result.routesList.map((route) => {
                     return (
                       <li
-                        key={route}
+                        key={route.id}
                         className="text-base leading-6 text-gray-600 m-4"
                       >
-                        {route}
+                        {route.name}
                       </li>
                     );
                   })}
@@ -103,13 +110,13 @@ const ResultSection = ({ result }) => {
                   IV Infusion (Intubated Patient Only)
                 </div>
                 <ul className="mt-2 list-disc">
-                  {result.ivInfusion.map((iv) => {
+                  {result.ivInfusionList.map((iv) => {
                     return (
                       <li
-                        key={iv}
+                        key={iv.id}
                         className="text-base leading-6 text-gray-600 m-4"
                       >
-                        {iv}
+                        {iv.name}
                       </li>
                     );
                   })}
