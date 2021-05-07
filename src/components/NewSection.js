@@ -1,13 +1,14 @@
 import React from "react";
 
 const NewSection = ({ medicineList }) => {
+  const reversedMedicineList = medicineList.reverse();
   return (
     <div>
       <div>
         <section className="text-gray-700 body-font">
           <div className="container px-8 pt-4 mx-auto ">
             <div className="flex flex-wrap text-center lg:divide-x">
-              {medicineList.map((medicine) => {
+              {reversedMedicineList.slice(0, 3).map((medicine) => {
                 return (
                   <div className="w-full px-8 py-6 mx-auto lg:w-1/3">
                     <h2 className="mb-3 text-lg font-semibold text-blue-600 lg:text-2xl title-font">

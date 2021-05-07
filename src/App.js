@@ -3,6 +3,7 @@ import MainPage from "./pages/MainPage";
 import NewMedicinePage from "./pages/NewMedicinePage";
 import { Switch, Route, useLocation } from "react-router-dom";
 import axios from "axios";
+import NavBar from "./components/NavBar";
 
 function App() {
   const location = useLocation();
@@ -12,7 +13,6 @@ function App() {
   const getMedicineData = () => {
     axios.get("/api").then((res) => {
       setMedicineList(res.data);
-      console.log("Data has been received!!");
     });
   };
 
@@ -22,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <Switch location={location} key={location.pathname}>
         <Route path="/" exact>
           <MainPage medicineList={medicineList} />

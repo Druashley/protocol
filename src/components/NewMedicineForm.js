@@ -230,6 +230,7 @@ const NewMedicineForm = () => {
               />
             </div>
           </div>
+
           <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
@@ -453,12 +454,14 @@ const NewMedicineForm = () => {
               />
             </div>
           </div>
-          <button
-            className="block bg-teal hover:bg-blue-700 text-white bg-blue-500 uppercase text-lg mx-auto p-4 rounded"
-            //type="submit"
-          >
-            Create Protocol
-          </button>
+          <div>
+            <button
+              className="block bg-teal hover:bg-blue-700 text-white bg-blue-500 uppercase text-lg mx-auto p-4 rounded"
+              //type="submit"
+            >
+              Create Protocol
+            </button>
+          </div>
         </form>
       </div>
     </div>
