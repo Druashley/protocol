@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
+import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
