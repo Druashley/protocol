@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import dataList from "../data.js";
+
 import ResultSection from "./ResultSection";
 
 const SearchBar = ({ medicineList }) => {

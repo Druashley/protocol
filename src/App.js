@@ -12,13 +12,18 @@ function App() {
 
   const getMedicineData = () => {
     axios.get("/api").then((res) => {
-      setMedicineList(res.data);
+      const reversedList = res.data.reverse();
+      setMedicineList(reversedList);
     });
   };
 
   useEffect(() => {
     getMedicineData();
   }, []);
+
+  useEffect(() => {
+    getMedicineData();
+  }, [location]);
 
   return (
     <div className="App">

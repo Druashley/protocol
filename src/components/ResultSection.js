@@ -6,7 +6,7 @@ const ResultSection = ({ result }) => {
       {result == null || result.medicineName ? (
         <div>
           <div className="max-w-screen-xl mx-auto p-8 mb-24 text-left">
-            <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
+            <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 uppercase">
               {result.medicineName}
             </h2>
             <ul className="flex items-start gap-8 flex-wrap">
