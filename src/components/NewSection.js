@@ -17,7 +17,7 @@ const NewSection = ({ medicineList }) => {
                       {medicine.newsPhrase}
                     </p>
                     <div className="flex flex-col items-center justify-center px-2 text-center lg:h-32">
-                      <h3 className="tracking-widest">04/15/21</h3>
+                      <h3 className="tracking-widest">{medicine.date}</h3>
                       <h2 className="flex items-center justify-center mt-2 mb-4 text-3xl font-bold leading-none text-black lg:text-6xl">
                         <span className="ml-1 text-base text-gray-600">
                           {medicine.author}

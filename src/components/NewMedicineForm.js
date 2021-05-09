@@ -67,11 +67,6 @@ const NewMedicineForm = () => {
     };
     history.push("/");
 
-    //   fetch(url, requestOptions)
-    //       .then(response => console.log('Submitted successfully'))
-    //       .catch(error => console.log('Form submit error', error))
-    // };
-
     fetch(url, requestOptions);
   };
 

@@ -4,6 +4,10 @@ import SearchBar from "../components/SearchBar";
 import NewSection from "../components/NewSection";
 
 const MainPage = ({ medicineList }) => {
+
+
+
+
   return (
     <div>
       <TitleSection
