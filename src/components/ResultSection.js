@@ -1,6 +1,25 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const ResultSection = ({ result }) => {
+  const { isAuthenticated } = useAuth0();
+
+  const editHandler = (id) => {
+    console.log(id);
+    const url = `/medicine/${id}`;
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: id,
+      }),
+    };
+
+    fetch(url, requestOptions);
+  };
+
   return (
     <div>
       {result == null || result.medicineName ? (
@@ -8,7 +27,18 @@ const ResultSection = ({ result }) => {
           <div className="max-w-screen-xl mx-auto p-8 mb-24 text-left">
             <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 uppercase">
               {result.medicineName}
+              {isAuthenticated ? (
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  size="xs"
+                  onClick={() => editHandler(result.id)}
+                  className="cursor-pointer ml-2"
+                />
+              ) : (
+                ""
+              )}
             </h2>
+
             <ul className="flex items-start gap-8 flex-wrap">
               <li className="w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
