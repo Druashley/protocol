@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import ResultSection from "./ResultSection";
 
-const SearchBar = ({ medicineList }) => {
-  const [searchText, setSearchText] = useState("");
+const SearchBar = ({ medicineList, searchText, setSearchText }) => {
+  // const [searchText, setSearchText] = useState("");
   const [result, setResult] = useState({});
 
   const searchHandler = (e) => {

@@ -1,6 +1,12 @@
 import React from "react";
 
-const NewSection = ({ medicineList }) => {
+const NewSection = ({ medicineList, setSearchText }) => {
+  const searchHandler = (e, medicineName) => {
+    const newSearch = medicineName;
+    e.preventDefault();
+    setSearchText(newSearch.toLowerCase());
+  };
+
   return (
     <div>
       <div>
@@ -24,7 +30,10 @@ const NewSection = ({ medicineList }) => {
                         </span>
                       </h2>
                     </div>
-                    <button className="flex items-center px-8 py-3 mx-auto mt-6 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg hover:bg-gray-200 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+                    <button
+                      onClick={(e) => searchHandler(e, medicine.medicineName)}
+                      className="flex items-center px-8 py-3 mx-auto mt-6 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg hover:bg-gray-200 hover:to-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+                    >
                       Read more
                     </button>
                   </div>

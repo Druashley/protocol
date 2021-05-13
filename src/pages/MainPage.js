@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import TitleSection from "../components/TitleSection";
 import SearchBar from "../components/SearchBar";
 import NewSection from "../components/NewSection";
 
 const MainPage = ({ medicineList }) => {
-
-
-
+  const [searchText, setSearchText] = useState("");
 
   return (
     <div>
@@ -15,8 +13,12 @@ const MainPage = ({ medicineList }) => {
             look through our newest changes to the protocol."
       />
 
-      <SearchBar medicineList={medicineList} />
-      <NewSection medicineList={medicineList} />
+      <SearchBar
+        medicineList={medicineList}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+      <NewSection medicineList={medicineList} setSearchText={setSearchText} />
     </div>
   );
 };
