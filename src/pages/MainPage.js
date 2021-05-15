@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TitleSection from "../components/TitleSection";
 import SearchBar from "../components/SearchBar";
 import NewSection from "../components/NewSection";
+import Example from "../components/table/Example";
 
 const MainPage = ({ medicineList }) => {
   const [searchText, setSearchText] = useState("");

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import Table from "./table/Table";
 
 const NewMedicineForm = () => {
   const [medicineName, setMedicineName] = useState("");
@@ -29,6 +30,12 @@ const NewMedicineForm = () => {
 
   const [ivInfusionList, setIvInfusionList] = useState([]);
   const [ivInfusionName, setIvInfusionName] = useState("");
+
+  const [tableHeaderList, setTableHeaderList] = useState([]);
+  const [tableHeaderName, setTableHeaderName] = useState("");
+
+  const [tableRowList, setTableRowList] = useState([]);
+  const [tableRowName, setTableRowName] = useState("");
 
   const history = useHistory();
 
@@ -176,6 +183,30 @@ const NewMedicineForm = () => {
   const removeIvInfusion = (id) => {
     const newList = ivInfusionList.filter((item) => item.id !== id);
     setIvInfusionList(newList);
+  };
+
+  const addTableHeader = (e) => {
+    if (tableHeaderName.length > 0) {
+      setTableHeaderList([
+        ...tableHeaderList,
+        {
+          id: tableHeaderList.length,
+          name: tableHeaderName,
+        },
+      ]);
+      setTableHeaderName("");
+    }
+  };
+
+  const removeTableHeader = (id) => {
+    const newList = tableHeaderList.filter((head) => head.id !== id);
+    setTableHeaderList(newList);
+  };
+
+  const addTableRow = (e) => {
+    const rowNames = Object.values(tableRowName);
+
+    setTableRowList([...tableRowList, { name: [rowNames] }]);
   };
 
   return (
@@ -449,6 +480,64 @@ const NewMedicineForm = () => {
               />
             </div>
           </div>
+          <div className="flex flex-col mb-4 md:w-1/2">
+            <label
+              className="mb-2 uppercase font-bold text-lg text-blue-600"
+              htmlFor="action"
+            >
+              Table Header
+            </label>
+
+            <div className="flex items-center ">
+              <input
+                name="item"
+                type="text"
+                className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                value={tableHeaderName}
+                onChange={(e) => setTableHeaderName(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addTableHeader}
+                className="cursor-pointer ml-2"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col mb-4 md:w-1/2">
+            <label
+              className="mb-2 uppercase font-bold text-lg text-blue-600"
+              htmlFor="action"
+            >
+              Table Row
+            </label>
+
+            <div className="flex items-center ">
+              {tableHeaderList.map((header) => {
+                return (
+                  <input
+                    key={header.id}
+                    name="item"
+                    type="text"
+                    className="border mb-2 py-2 px-3 text-grey-darkest md:mr-2"
+                    value={tableRowName[header.id]}
+                    onChange={(e) =>
+                      setTableRowName({
+                        ...tableRowName,
+                        [header.id]: e.target.value,
+                      })
+                    }
+                  />
+                );
+              })}
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                size="2x"
+                onClick={addTableRow}
+                className="cursor-pointer ml-2"
+              />
+            </div>
+          </div>
           <div>
             <button
               className="block bg-teal hover:bg-blue-700 text-white bg-blue-500 uppercase text-lg mx-auto p-4 rounded"
@@ -458,6 +547,14 @@ const NewMedicineForm = () => {
             </button>
           </div>
         </form>
+        <div>
+          <Table
+            theadData={tableHeaderList}
+            removeTableHeader={removeTableHeader}
+            tbodyData={tableRowList}
+            edit={true}
+          />
+        </div>
       </div>
     </div>
   );
