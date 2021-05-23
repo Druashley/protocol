@@ -9,7 +9,7 @@ const NewMedicineForm = () => {
   const [tradeName, setTradeName] = useState("");
   const [newsPhrase, setNewsPhrase] = useState("");
 
-  const [author, setAuthor] = useState("Dr. Bond");
+  const [author, setAuthor] = useState("Dr. Strange");
 
   const [newMedicine, setNewMedicine] = useState([]);
 
@@ -55,7 +55,7 @@ const NewMedicineForm = () => {
       author: author,
     });
 
-    const url = "/";
+    const url = "https://protocol-ems.herokuapp.com/";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -480,7 +480,7 @@ const NewMedicineForm = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col mb-4 md:w-1/2">
+          {/* <div className="flex flex-col mb-4 md:w-1/2">
             <label
               className="mb-2 uppercase font-bold text-lg text-blue-600"
               htmlFor="action"
@@ -537,7 +537,7 @@ const NewMedicineForm = () => {
                 className="cursor-pointer ml-2"
               />
             </div>
-          </div>
+          </div> */}
           <div>
             <button
               className="block bg-teal hover:bg-blue-700 text-white bg-blue-500 uppercase text-lg mx-auto p-4 rounded"
@@ -547,14 +547,14 @@ const NewMedicineForm = () => {
             </button>
           </div>
         </form>
-        <div>
+        {/* <div>
           <Table
             theadData={tableHeaderList}
             removeTableHeader={removeTableHeader}
             tbodyData={tableRowList}
             edit={true}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

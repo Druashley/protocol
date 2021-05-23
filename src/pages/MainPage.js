@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import TitleSection from "../components/TitleSection";
 import SearchBar from "../components/SearchBar";
 import NewSection from "../components/NewSection";
-import Example from "../components/table/Example";
 
 const MainPage = ({ medicineList }) => {
   const [searchText, setSearchText] = useState("");
 
   return (
     <div>
-      <TitleSection
-        phrase="Please use the search bar to find the answer you are seeking. Also,
-            look through our newest changes to the protocol."
-      />
+      <TitleSection phrase="This is not intended to be real a real EMS protocol. This is just a fun project I put together." />
 
       <SearchBar
         medicineList={medicineList}

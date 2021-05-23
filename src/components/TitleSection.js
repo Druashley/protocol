@@ -7,7 +7,7 @@ const TitleSection = ({ phrase }) => {
         <div className="container px-8 mx-auto py-20 lg:px-4">
           <div className="flex flex-col w-full mb-12 text-left lg:text-center">
             <h2 className="mb-1 text-2xl font-semibold tracking-widest text-blue-600 sm:text-1xl uppercase title-font">
-              Mercy Flights
+              Generic EMS
             </h2>
             <h1 className="mb-6 text-3xl font-semibold tracking-tighter text-blue-700 sm:text-6xl title-font">
               {" "}

@@ -11,7 +11,7 @@ function App() {
   const [medicineList, setMedicineList] = useState([]);
 
   const getMedicineData = () => {
-    axios.get("/api").then((res) => {
+    axios.get("https://protocol-ems.herokuapp.com/api").then((res) => {
       const reversedList = res.data.reverse();
       setMedicineList(reversedList);
     });
