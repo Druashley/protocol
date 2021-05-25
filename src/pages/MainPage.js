@@ -9,7 +9,7 @@ const MainPage = ({ medicineList }) => {
 
   return (
     <div>
-      <TitleSection phrase="This is not intended to be real a real EMS protocol. This is just a fun project I put together." />
+      <TitleSection phrase="This is not intended to be a real EMS protocol. This is just a fun project I put together." />
 
       <SearchBar
         medicineList={medicineList}

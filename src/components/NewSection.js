@@ -16,7 +16,10 @@ const NewSection = ({ medicineList, setSearchText }) => {
               {medicineList.slice(0, 3).map((medicine) => {
                 return (
                   <div className="w-full px-8 py-6 mx-auto lg:w-1/3">
-                    <h2 className="mb-3 text-lg font-semibold text-blue-600 lg:text-2xl uppercase">
+                    <h2
+                      onClick={(e) => searchHandler(e, medicine.medicineName)}
+                      className="mb-3 text-lg font-semibold text-blue-600 lg:text-2xl uppercase cursor-pointer"
+                    >
                       {medicine.medicineName}
                     </h2>
                     <p className="my-4 text-base leading-relaxed ">
