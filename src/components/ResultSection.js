@@ -50,7 +50,7 @@ const ResultSection = ({ result }) => {
                   </div>
                 </div>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Action
                 </div>
@@ -67,7 +67,7 @@ const ResultSection = ({ result }) => {
                   })}
                 </ul>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Indications
                 </div>
@@ -84,7 +84,7 @@ const ResultSection = ({ result }) => {
                   })}
                 </ul>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Contraindications
                 </div>
@@ -101,7 +101,7 @@ const ResultSection = ({ result }) => {
                   })}
                 </ul>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Side Effects & Precautions
                 </div>
@@ -118,7 +118,7 @@ const ResultSection = ({ result }) => {
                   })}
                 </ul>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   Route & Dosage
                 </div>
@@ -135,7 +135,7 @@ const ResultSection = ({ result }) => {
                   })}
                 </ul>
               </li>
-              <li className="w-2/5">
+              <li className="md:w-2/5">
                 <div className="text-lg font-medium leading-6 text-blue-600">
                   IV Infusion (Intubated Patient Only)
                 </div>
